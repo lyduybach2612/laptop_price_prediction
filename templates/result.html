@@ -8,11 +8,19 @@
 <body>
     <div class="container">
         <h1 class="text-center">RESULT</h1>
+
+        <!-- <div></div>
+            <h2>Dữ liệu đầu vào:</h2>
+            <div>{{ df_html|safe }}</div> 
+        </div> -->
+
         <div class="d-flex flex-column">
             <div class="fs-3">Linear Regression: {{linear_price}}</div>
             <div class="fs-3">Ridge Regression: {{ridge_price}}</div>
             <div class="fs-3">MLP Regression: {{mlp_price}}</div>
-            <div class="fs-3">Bagging: {{bagging_price}}</div>
+            <div class="fs-3">Linear Bagging: {{linear_bagging_price}}</div>
+            <div class="fs-3">Ridge Bagging: {{ridge_bagging_price}}</div>
+            <div class="fs-3">MLP Bagging: {{mlp_bagging_price}}</div>
         </div>
     </div>
 </body>

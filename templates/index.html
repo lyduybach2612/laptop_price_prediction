@@ -28,6 +28,7 @@
     <div class="container">
       <h2 class="text-center mt-4 mb-4">Dự đoán giá laptop</h2>
       <form action="/" method="post">
+
         <div class="form-group mb-3">
           <label for="company">Công ty</label>
           <select class="form-control" id="company" name="company">
@@ -54,6 +55,12 @@
         </div>
 
         <div class="form-group mb-3">
+          <label for="product">Laptop:</label>
+          <select id="product" name="product" class="form-control"></select>
+        </div>
+          
+
+        <div class="form-group mb-3">
           <label for="deviceType">Loại</label>
           <select id="deviceType" name="deviceType" class="form-control">
             <option value="Ultrabook">Ultrabook</option>
@@ -71,14 +78,16 @@
         </div>
 
         <div class="form-group mb-3">
+          <label for="ScreenResolution">Chọn độ phân giải màn hình:</label>
+          <select id="ScreenResolution" name="ScreenResolution" class="form-control"></select>
+        </div>
+
+        <div class="form-group mb-3">
           <label for="cpuCompany">Công ty CPU</label>
           <select id="cpuCompany" name="cpuCompany" class="form-control">
             <option value="Intel">Intel</option>
             <option value="AMD">AMD</option>
-            <option value="Apple M1">Apple M1</option>
-            <option value="Qualcomm">Qualcomm</option>
-            <option value="ARM">ARM</option>
-            <option value="Other">Other</option>
+            <option value="Samsung">Samsung</option>
           </select>
         </div>
 
@@ -139,6 +148,11 @@
         </div>
 
         <div class="form-group mb-3">
+          <label for="gpuType">Card Đồ Hoạ:</label>
+          <select id="gpuType" name="gpuType" class="form-control"></select>
+      </div>
+
+        <div class="form-group mb-3">
           <label for="operatingSystem">Hệ điều hành:</label>
           <select
             id="operatingSystem"
@@ -166,4 +180,158 @@
       </form>
     </div>
   </body>
+
+  <script>
+    const laptops = [
+      "MacBook Pro",
+      "MacBook Air",
+      "250 G6",
+      "Aspire 3",
+      "ZenBook UX430UN",
+      "Swift 3",
+      "Inspiron 3567",
+      "MacBook 12",
+      "IdeaPad 320-15IKB",
+      "XPS 13",
+      "Vivobook E200HA",
+      "Legion Y520-15IKBN",
+      "255 G6",
+      "Inspiron 5379",
+      "15-BS101nv (i7-8550U/8GB/256GB/FHD/W10)",
+      "MacBook Air",
+      "Inspiron 5570",
+      "Latitude 5590",
+      "ProBook 470",
+      "LapBook 15.6",
+      "E402WA-GA010T",
+      "17-ak001nv",
+      "IdeaPad 120S-14IAP",
+      "Inspiron 5770",
+      "ProBook 450",
+      "X540UA-DM186",
+      "Inspiron 7577",
+      "X542UQ-GO005",
+      "Aspire A515-51G",
+      "Inspiron 7773",
+      "IdeaPad 320-15ISK",
+      "Rog Strix",
+      "X751NV-TY001T",
+      "Yoga Book",
+      "ProBook 430",
+      "Inspiron 3576",
+      "15-bs002nv",
+      "VivoBook Max",
+      "GS73VR 7RG",
+      "X541UA-DM1897",
+      "Vostro 5471",
+      "IdeaPad 520S-14IKB",
+      "UX410UA-GV350T",
+      "ZenBook Pro",
+      "Stream 14-AX040wm",
+      "V310-15ISK",
+      "FX753VE-GC093",
+      "Surface Laptop",
+      "Inspiron 5370",
+      "GL72M 7RDX",
+      "Aspire E5-475",
+      "FX503VD-E4022T",
+      "IdeaPad 320-15IKBN",
+      "Aspire A515-51G-32MX",
+      "ProBook 440",
+      "IdeaPad 320-15AST",
+      "Pavilion 15-CK000nv",
+      "FX503VM-E4007T",
+      "FX550IK-DM018T",
+      "Aspire 5",
+      "GE62 Apache",
+      "Yoga 500-14IBD",
+      "ZenBook UX305CA-UBM1",
+      "Aspire ES1-531",
+      "Pavilion 15-AW003nv",
+      "Stream 11-Y000na",
+      "X556UJ-XO044T",
+      "Yoga 500-14ISK",
+      "15-AC110nv",
+      "X553SA-XX031T",
+    ];
+    const product = document.getElementById("product");
+
+    laptops.forEach(function (laptop) {
+      const option = document.createElement("option");
+      option.value = laptop;
+      option.textContent = laptop;
+      product.appendChild(option);
+    });
+
+    const graphicsCards = [
+        'Iris Plus Graphics 640', 'HD Graphics 6000', 'HD Graphics 620',
+        'Radeon Pro 455', 'Iris Plus Graphics 650', 'Radeon R5',
+        'Iris Pro Graphics', 'GeForce MX150', 'UHD Graphics 620',
+        'HD Graphics 520', 'Radeon Pro 555', 'Radeon R5 M430',
+        'HD Graphics 615', 'Radeon Pro 560', 'GeForce 940MX',
+        'HD Graphics 400', 'GeForce GTX 1050', 'Radeon R2', 'Radeon 530',
+        'GeForce 930MX', 'HD Graphics', 'HD Graphics 500',
+        'GeForce GTX 1060', 'GeForce 150MX', 'Iris Graphics 540',
+        'Radeon RX 580', 'GeForce 920MX', 'Radeon R4 Graphics',
+        'Radeon 520', 'GeForce GTX 1070', 'GeForce GTX 1050 Ti',
+        'GeForce MX130', 'R4 Graphics', 'GeForce GTX 940MX',
+        'Radeon RX 560', 'GeForce 920M', 'Radeon R7 M445', 'Radeon RX 550',
+        'GeForce GTX 1050M', 'HD Graphics 515', 'Radeon R5 M420',
+        'HD Graphics 505', 'GTX 980 SLI', 'R17M-M1-70', 'GeForce GTX 1080',
+        'Quadro M1200', 'GeForce GTX 950M', 'FirePro W4190M',
+        'GeForce GTX 980M', 'Iris Graphics 550', 'GeForce 930M',
+        'HD Graphics 630', 'Radeon R5 430', 'GeForce GTX 940M',
+        'HD Graphics 510', 'HD Graphics 405', 'Radeon RX 540',
+        'GeForce GT 940MX', 'FirePro W5130M', 'Quadro M2200M', 'Radeon R4',
+        'Quadro M620', 'Radeon R7 M460', 'HD Graphics 530',
+        'GeForce GTX 965M', 'GeForce GTX1080', 'GeForce GTX1050 Ti',
+        'GeForce GTX 960M', 'Radeon R2 Graphics', 'Quadro M620M',
+        'GeForce GTX 970M', 'GeForce GTX 960Μ', 'Graphics 620',
+        'GeForce GTX 960', 'Radeon R5 520', 'Radeon R7 M440', 'Radeon R7',
+        'Quadro M520M', 'Quadro M2200', 'Quadro M2000M', 'HD Graphics 540',
+        'GeForce GTX 1050Ti', 'Radeon R7 M365X', 'Radeon R9 M385',
+        'Quadro 3000M', 'GeForce GTX 980', 'Radeon R5 M330',
+        'FirePro W6150M', 'Radeon R5 M315', 'Quadro M500M',
+        'Radeon R7 M360', 'Quadro M3000M', 'GeForce 960M', 'Mali T860 MP4'
+    ];
+
+    const gpuType = document.getElementById("gpuType");
+
+    graphicsCards.forEach(function(card) {
+        const option = document.createElement("option");
+        option.value = card;
+        option.textContent = card;
+        gpuType.appendChild(option);
+    });
+
+    const screenResolutions = [
+        'IPS Panel Retina Display 2560x1600', '1440x900', 'Full HD 1920x1080', 
+        'IPS Panel Retina Display 2880x1800', '1366x768', 'IPS Panel Full HD 1920x1080', 
+        'IPS Panel Retina Display 2304x1440', 'IPS Panel Full HD / Touchscreen 1920x1080', 
+        'Full HD / Touchscreen 1920x1080', 'Touchscreen / Quad HD+ 3200x1800', 
+        'IPS Panel Touchscreen 1920x1200', 'Touchscreen 2256x1504', 
+        'Quad HD+ / Touchscreen 3200x1800', 'IPS Panel 1366x768', 
+        'IPS Panel 4K Ultra HD / Touchscreen 3840x2160', 'IPS Panel Full HD 2160x1440', 
+        '4K Ultra HD / Touchscreen 3840x2160', 'Touchscreen 2560x1440', 
+        '1600x900', 'IPS Panel 4K Ultra HD 3840x2160', '4K Ultra HD 3840x2160', 
+        'Touchscreen 1366x768', 'IPS Panel Full HD 1366x768', 'IPS Panel 2560x1440', 
+        'IPS Panel Full HD 2560x1440', 'IPS Panel Retina Display 2736x1824', 
+        'Touchscreen 2400x1600', '2560x1440', 'IPS Panel Quad HD+ 2560x1440', 
+        'IPS Panel Quad HD+ 3200x1800', 'IPS Panel Quad HD+ / Touchscreen 3200x1800', 
+        'IPS Panel Touchscreen 1366x768', '1920x1080', 'IPS Panel Full HD 1920x1200', 
+        'IPS Panel Touchscreen / 4K Ultra HD 3840x2160', 'IPS Panel Touchscreen 2560x1440', 
+        'Touchscreen / Full HD 1920x1080', 'Quad HD+ 3200x1800', 
+        'Touchscreen / 4K Ultra HD 3840x2160', 'IPS Panel Touchscreen 2400x1600'
+    ];
+
+    const screenResolution = document.getElementById("ScreenResolution");
+
+    screenResolutions.forEach(function(resolution) {
+        const option = document.createElement("option");
+        option.value = resolution;
+        option.textContent = resolution;
+        screenResolution.appendChild(option);
+    });
+
+  </script>
 </html>
